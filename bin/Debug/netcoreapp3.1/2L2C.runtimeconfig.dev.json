@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/sylouan/.dotnet/store/|arch|/|tfm|",
+      "/home/sylouan/.nuget/packages"
+    ]
+  }
+}
