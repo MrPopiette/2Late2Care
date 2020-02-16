@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using ToLateToCare_front.Data;
+using _2Late2CareBack;
+
+namespace ToLateToCare_front
+{
+    public class ClassesEditModel : PageModel
+    {
+        private readonly ToLateToCare_front.Data.ContexteBDD _context;
+
+        public ClassesEditModel(ToLateToCare_front.Data.ContexteBDD context)
+        {
+            _context = context;
+        }
+
+        [BindProperty]
+        public Classe Classe { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Classe = await _context.Classes.FirstOrDefaultAsync(m => m.libelle == id);
+
+            if (Classe == null)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
+
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            _context.Attach(Classe).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ClasseExists(Classe.libelle))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToPage("./Index");
+        }
+
+        private bool ClasseExists(string id)
+        {
+            return _context.Classes.Any(e => e.libelle == id);
+        }
+    }
+}
