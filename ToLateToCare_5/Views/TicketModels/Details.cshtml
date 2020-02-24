@@ -1,0 +1,58 @@
+﻿@model ToLateToCare_5.Models.TicketModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>TicketModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.titre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.titre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.urlPhoto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.urlPhoto)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
