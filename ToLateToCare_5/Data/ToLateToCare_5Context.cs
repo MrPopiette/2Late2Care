@@ -24,5 +24,7 @@ namespace ToLateToCare_5.Data
         public System.Data.Entity.DbSet<ToLateToCare_5.Models.TicketModel> TicketModels { get; set; }
 
         public System.Data.Entity.DbSet<ToLateToCare_5.Models.TagModel> TagModels { get; set; }
+
+        public System.Data.Entity.DbSet<ToLateToCare_5.Models.VoteModel> VoteModel {get; set;}
     }
 }
