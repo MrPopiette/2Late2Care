@@ -49,7 +49,7 @@ namespace ToLateToCare_5.Models
             return db.Utilisateurs.ToList();
         }
 
-        public void CreerTicket(string titre, string texte, UtilisateurModel utilisateur, DateTime date, string urlPhoto, Collection<TagModel> tags)
+        public void CreerTicket(string titre, string texte, UtilisateurModel utilisateur, DateTime date, string urlPhoto, IEnumerable<TagModel> tags)
         {
             TicketModel ticket = new TicketModel { titre = titre, description = texte , auteur = utilisateur, date = date, urlPhoto = urlPhoto, tags = tags };
             db.Tickets.Add(ticket);

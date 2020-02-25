@@ -112,6 +112,11 @@
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -218,6 +223,10 @@
     <Compile Include="Migrations\202002252133435_id-Classe.Designer.cs">
       <DependentUpon>202002252133435_id-Classe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002252217354_iEnumerable.cs" />
+    <Compile Include="Migrations\202002252217354_iEnumerable.Designer.cs">
+      <DependentUpon>202002252217354_iEnumerable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClasseModel.cs" />
     <Compile Include="Models\ContexteBdd.cs" />
@@ -270,6 +279,8 @@
     <Content Include="Views\UtilisateurModels\Details.cshtml" />
     <Content Include="Views\UtilisateurModels\Edit.cshtml" />
     <Content Include="Views\UtilisateurModels\Index.cshtml" />
+    <Content Include="Views\Home\Connexion.cshtml" />
+    <Content Include="Views\Home\Inscription.cshtml" />
     <Content Include="Views\TicketModels\Create.cshtml" />
     <Content Include="Views\TicketModels\Delete.cshtml" />
     <Content Include="Views\TicketModels\Details.cshtml" />
@@ -280,8 +291,6 @@
     <Content Include="Views\TagModels\Details.cshtml" />
     <Content Include="Views\TagModels\Edit.cshtml" />
     <Content Include="Views\TagModels\Index.cshtml" />
-    <Content Include="Views\Home\Connexion.cshtml" />
-    <Content Include="Views\Home\Inscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002252133435_id-Classe.resx">
       <DependentUpon>202002252133435_id-Classe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002252217354_iEnumerable.resx">
+      <DependentUpon>202002252217354_iEnumerable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -343,7 +355,9 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
+  <Import Project="packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

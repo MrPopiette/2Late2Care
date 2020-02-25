@@ -26,6 +26,6 @@ namespace ToLateToCare_5.Models
 
         public string urlPhoto { get; set; }
 
-        public ICollection<TagModel> tags { get; set; }
+        public IEnumerable<TagModel> tags { get; set; }
     }
 }

@@ -13,7 +13,14 @@ namespace ToLateToCare_5.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["user"] == null)
+            {
+                return View("~/Views/Home/Connexion.cshtml");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult About()
@@ -101,7 +108,7 @@ namespace ToLateToCare_5.Controllers
 
         
         [HttpPost, ValidateInput(false)]
-        public ActionResult AddTicket(string titre, string description, string urlPhoto, Collection<TagModel> tags)
+        public ActionResult AddTicket(string titre, string description, string urlPhoto, IEnumerable<TagModel> tags)
         {
             using (IMethods methods = new MethodFromContext())
             {

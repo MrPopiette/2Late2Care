@@ -10,7 +10,7 @@ namespace ToLateToCare_5.Models
     interface IMethods : IDisposable
     {
         UtilisateurModel Connecter(string nom, string mdp);
-        void CreerTicket(string titre, string texte, UtilisateurModel utilisateur, DateTime date, string urlPhoto, Collection<TagModel> tags);
+        void CreerTicket(string titre, string texte, UtilisateurModel utilisateur, DateTime date, string urlPhoto, IEnumerable<TagModel> tags);
 
         List<TicketModel> GetAllTickets();
         bool CheckTicketExiste(string titre);
