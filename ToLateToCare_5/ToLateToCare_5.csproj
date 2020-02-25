@@ -217,6 +217,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClasseModel.cs" />
     <Compile Include="Models\ContexteBdd.cs" />
+    <Compile Include="Models\IMethods.cs" />
+    <Compile Include="Models\MethodFromContext.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="Models\TicketModel.cs" />
     <Compile Include="Models\UtilisateurModel.cs" />
@@ -274,6 +276,7 @@
     <Content Include="Views\TagModels\Details.cshtml" />
     <Content Include="Views\TagModels\Edit.cshtml" />
     <Content Include="Views\TagModels\Index.cshtml" />
+    <Content Include="Views\Home\Connexion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,7 @@ namespace ToLateToCare_5.Models
 {
     public class UtilisateurModel
     {
+
         [Key]
         public int Id { get; set; }
 
@@ -20,5 +21,8 @@ namespace ToLateToCare_5.Models
 
         [Required]
         public string mail { get; set; }
+
+        [Required]
+        public string password { get; set; }
     }
 }
