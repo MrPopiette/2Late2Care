@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -30,7 +31,7 @@ namespace ToLateToCare_5.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Authentification(string pseudo, string password)
+        public ActionResult Connexion(string pseudo, string password)
         {
             using (IMethods methods = new MethodFromContext())
             {
@@ -77,17 +78,16 @@ namespace ToLateToCare_5.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult AjoutUtilisateur(string nom, string prenom, string email, string mdp, int INTpromo_id)
+        public ActionResult AjoutUtilisateur(string pseudo, string mail, string password, ClasseModel classe)
         {
             using (IMethods methods = new MethodFromContext())
             {
                 try
                 {
-                    using (var context = new ContexteBDD())
+                    using (var context = new ContexteBdd())
                     {
-                        Promo promo_id = context.Promos.First(p => p.ID == INTpromo_id);
-                        dal.AjouterUtilisateur(nom, prenom, email, mdp, promo_id);
-                        return View("~/Views/Home/Login.cshtml");
+                        methods.CreerUtilisateur(pseudo, mail, password, classe);
+                        return View("~/Views/Home/Connexion.cshtml");
                     }
                 }
                 catch (IOException e)
@@ -101,7 +101,7 @@ namespace ToLateToCare_5.Controllers
 
         
         [HttpPost, ValidateInput(false)]
-        public ActionResult AddTicket(string texte)
+        public ActionResult AddTicket(string titre, string description, string urlPhoto, Collection<TagModel> tags)
         {
             using (IMethods methods = new MethodFromContext())
             {
@@ -109,25 +109,22 @@ namespace ToLateToCare_5.Controllers
                 {
                     using (var context = new ContexteBdd())
                     {
-                        UtilisateurModel utilisateur_id = methods.GetUtilisateur((int)Session["user"]);
-                        DateTime dateNow = DateTime.Now;
-                        int likes = 0;
-                        int dislikes = 0;
-                        methods.CreerTicket(texte, utilisateur_id, dateNow, likes, dislikes);
-                        ViewBag.texte = texte;
-                        ViewBag.utilisateur_id = utilisateur_id;
-                        ViewBag.dateNow = dateNow;
-                        ViewBag.likes = likes;
-                        ViewBag.dislikes = dislikes;
+                        UtilisateurModel utilisateur = methods.GetUtilisateur((int)Session["user"]);
+                        DateTime dateNow = DateTime.Now;                       
+                        methods.CreerTicket(titre, description, utilisateur, dateNow, urlPhoto, tags);
+                        ViewBag.titre = titre;
+                        ViewBag.description = description;
+                        ViewBag.utilisateur = utilisateur;
+                        ViewBag.date = dateNow;
                     }
-                    return View("~/Views/Home/ListerPost.cshtml");
+                    return View("~/Views/Home/GetAllTickets.cshtml");
 
                 }
                 catch (IOException e)
                 {
                     Console.WriteLine($"Error : '{e}'");
                 }
-                return View("~/Views/Home/CreerPost.cshtml");
+                return View("~/Views/Home/AddTicket.cshtml");
             }
         }
     }

@@ -21,6 +21,5 @@ namespace ToLateToCare_5.Models
         UtilisateurModel GetUtilisateur(int id);
 
         List<UtilisateurModel> GetAllUtilisateurs();
-
     }
 }

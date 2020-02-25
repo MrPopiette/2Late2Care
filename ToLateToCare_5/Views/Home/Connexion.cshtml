@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Connexion";
 }
 
-@using (Html.BeginForm("Authentification", "Home", FormMethod.Post, new { @class = "form" }))
+@using (Html.BeginForm("Connexion", "Home", FormMethod.Post, new { @class = "form" }))
 {
 
 
@@ -11,13 +11,15 @@
     @Html.AntiForgeryToken();
 
     <h2>Login</h2>
-    <form action="@Html.ActionLink("Accueil", "Authentification", "Home")">
-        <p>Nom :</p>
-        <input type="text" name="nom" placeholder=" Feroniererere " />
+    <form action="@Html.ActionLink("Accueil", "Connexion", "Home")">
+        <p>Pseudo :</p>
+        <input type="text" name="pseudo" placeholder="Place something here.. " />
         <p>Mot de passe :</p>
-        <input type="password" name="mdp" />
+        <input type="password" name="password" />
 
-        <input class="btn btn-primary btn-lg" type="submit" value="Soumettre">
+        <input class="btn btn-primary btn-lg" type="submit" value="Se connecter">
     </form>
-    <p><a href="/Home/Inscription">S'inscrire &raquo;</a></p>
+    <p>
+        <a href="/Home/Inscription">Aller s'inscrire &raquo;</a>
+    </p>
 }

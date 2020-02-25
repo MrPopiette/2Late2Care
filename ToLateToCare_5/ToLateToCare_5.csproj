@@ -214,6 +214,10 @@
     <Compile Include="Migrations\202002242103147_Views.Designer.cs">
       <DependentUpon>202002242103147_Views.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002252133435_id-Classe.cs" />
+    <Compile Include="Migrations\202002252133435_id-Classe.Designer.cs">
+      <DependentUpon>202002252133435_id-Classe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClasseModel.cs" />
     <Compile Include="Models\ContexteBdd.cs" />
@@ -277,6 +281,7 @@
     <Content Include="Views\TagModels\Edit.cshtml" />
     <Content Include="Views\TagModels\Index.cshtml" />
     <Content Include="Views\Home\Connexion.cshtml" />
+    <Content Include="Views\Home\Inscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002242103147_Views.resx">
       <DependentUpon>202002242103147_Views.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002252133435_id-Classe.resx">
+      <DependentUpon>202002252133435_id-Classe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
